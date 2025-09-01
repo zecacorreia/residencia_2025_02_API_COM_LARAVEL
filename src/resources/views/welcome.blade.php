@@ -1,1 +1,1 @@
-<h1>API com laravel</h1>
+<h1>API com laravel 2025.2</h1>

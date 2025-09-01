@@ -13,5 +13,4 @@ class AgendaController extends Controller
 
 
 
-
 }
