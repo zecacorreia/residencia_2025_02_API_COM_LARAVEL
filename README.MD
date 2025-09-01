@@ -39,6 +39,12 @@ localhost
 docker exec -it agenda bash
 ```
 
+###  Instalando as dependencias 
+
+```bash
+composer install
+```
+
 ### Acessando o container do Banco de Dados
 
 ```bash
