@@ -51,42 +51,14 @@ cd <nome-do-repo>
 composer install
 ```
 
-### 3. Configure o ambiente
-
-Copie o arquivo `.env.example` para `.env`:
-
-```bash
-cp .env.example .env
-```
-
-Edite o `.env` com as credenciais do seu banco de dados MySQL/MariaDB.
-
-### 4. Gere a chave da aplicação
-
-```bash
-php artisan key:generate
-```
-
-### 5. Execute as migrações do banco de dados
-
-```bash
-php artisan migrate
-```
-
-Se necessário, também rode as seeders para popular dados iniciais:
-
-```bash
-php artisan db:seed
-```
-
-### 6. Instale dependências frontend
+### 3. Instale dependências frontend
 
 ```bash
 npm install
 npm run dev
 ```
 
-### 7. Levante o servidor local
+### 4. Levante o servidor local
 
 ```bash
 php artisan serve
