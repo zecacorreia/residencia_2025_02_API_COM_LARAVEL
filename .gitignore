@@ -12,3 +12,5 @@
 /src/.idea
 /src/.vscode
 /db
+.DS_Store
+Thumbs.db
