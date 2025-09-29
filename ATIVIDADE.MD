@@ -25,6 +25,7 @@ Lista de Exercícios (passo a passo)
 
 ⸻
 
+
 4) Regras de negócio (estado)
 	1.	Status inicial sempre escrito.
 	2.	Aprovar só muda escrito → aprovado.
