@@ -69,11 +69,11 @@ class AgendaController extends Controller
     public function visualizar($id){
         $registro = Agenda::find($id);
 
-        if($registro){
-            return response()->json($registro, 200);
+        if(!$registro){
+            return response()->json(['erro' => 'Registro nao encontrado'], 404);
         }
 
-        return response()->json(['erro' => 'Registro nao encontrado'], 404);
+        return response()->json($registro, 200);
 
     }
 
@@ -121,12 +121,6 @@ class AgendaController extends Controller
             //     return response()->json(['erro' => 'Telefone ja cadastrado'], 400);
             // }
         //FIM DAS VALIDAÇÕES MANUAIS
-
-
-
-
-
-
 
 
         $agenda->nome = $nome_recebido;

@@ -18,8 +18,13 @@ Route::delete('/agenda/{id}', [AgendaController::class, 'deletar']); //200 ou 40
 
 
 
-Route::group(['middleware' => ['JWTToken']], function () {
+Route::post('/user', [TokenController::class, 'index']); //200 ou 401
 
+
+
+
+Route::group(['middleware' => ['JWTToken']], function () {
+    // Route::get('/agenda', [AgendaController::class, 'index']);  //200
 
 });
 

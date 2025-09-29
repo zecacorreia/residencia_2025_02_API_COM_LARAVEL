@@ -19,12 +19,14 @@ class TokenController extends Controller
      */
     public function index(Request $request)
     {
-        $segredo='$2y$10$iTDP7t1QjpBX7DPH/pbdmu/dz8IglEWn.1Qn5mz5O30ZAAlD1ovbC';
+    //    $senha=  Hash::make("001205");
+    //    dd( $senha);
+
+        $segredo='$2y$10$IOf2BnUwcrE8.IxT768QX.UGp/NTMVikAq29i3O3CMVrZiTDOuhtC';
         $user = "Luiz";
 
         $usuario = $request->input('usuario');
         $senha = $request->input('senha');
-
 
         if(!Hash::check($senha, $segredo) || $usuario !== $user){
             return response()->json([
@@ -34,11 +36,10 @@ class TokenController extends Controller
         }
 
         $key = env('JWT_KEY');
-        $dados = array("data" => date("Y-m-d H:i:s"),"Nome" => "Luiz");
+        $dados = array("data" => date("Y-m-d H:i:s"),"Nome" => "Luiz Siqueira", "email" => "lsiqueira@sjcc.com.br");
         $token = JWT::encode($dados, $key,'HS256' );
 
         return response()->json([
-            "usuario" => $user,
             "token" => $token,
         ]);
     }

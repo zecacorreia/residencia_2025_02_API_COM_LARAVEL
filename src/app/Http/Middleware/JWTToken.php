@@ -24,6 +24,7 @@ class JWTToken
             list($token) = sscanf( $request->header('Authorization'), 'Bearer %s');
 
 
+
         try {
             $decoded = JWT::decode($token, new Key(env('JWT_KEY'), 'HS256'));
 
