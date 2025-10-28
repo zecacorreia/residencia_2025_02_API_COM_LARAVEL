@@ -1,32 +1,21 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Tokencontroller;
-
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\TokenController;
 
+Route::prefix('v1')->group(function () {
+    // login (gera JWT ou retorna token)
+    Route::post('/auth/login', [TokenController::class, 'index']);
 
+    // públicas (se quiser manter assim)
+    Route::get('/agenda', [AgendaController::class, 'index']);
+    Route::get('/agenda/{id}', [AgendaController::class, 'visualizar']);
 
-
-Route::get('/agenda', [AgendaController::class, 'index']);  //200
-Route::post('/agenda', [AgendaController::class, 'criar']);  //201
-Route::get('/agenda/{id}', [AgendaController::class, 'visualizar']); //200 ou 404
-Route::put('/agenda/{id}', [AgendaController::class, 'atualizar']); //200 ou 404
-Route::delete('/agenda/{id}', [AgendaController::class, 'deletar']); //200 ou 404
-
-
-
-
-Route::post('/user', [TokenController::class, 'index']); //200 ou 401
-
-
-
-
-Route::group(['middleware' => ['JWTToken']], function () {
-    // Route::get('/agenda', [AgendaController::class, 'index']);  //200
-
+    // protegidas por JWT
+    Route::middleware(['JWTToken'])->group(function () {
+        Route::post('/agenda', [AgendaController::class, 'criar']);
+        Route::put('/agenda/{id}', [AgendaController::class, 'atualizar']);
+        Route::delete('/agenda/{id}', [AgendaController::class, 'deletar']);
+    });
 });
-
-
-
